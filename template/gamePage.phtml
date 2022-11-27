@@ -1,0 +1,86 @@
+<div class="gamePageContainer">
+
+    <div class="carouselContainer">
+        <div class="carousel">
+            <div class="slides">
+                <img src="../styles/image/link.jpg" alt="slide image" class="slide">
+                <img src="../styles/image/ff6.jpg" alt="slide image" class="slide">
+                <img src="../styles/image/tourbillon.jpg" alt="slide image" class="slide">
+                <img src="../styles/image/bouclier.jpg" alt="slide image" class="slide">
+
+            </div>
+            <div class="controls">
+                <div class="control prev-slide">&#9668;</div>
+                <div class="control next-slide">&#9658;</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="noteContainer">
+
+        <h3><?= htmlentities($Game->getGameName()) ?></h3>
+
+        <div class="note1">
+            <p> <?= htmlentities($Game->getCategory())?>
+            </p>
+        </div>
+
+        <div class="note2">
+            <p> <?= htmlentities($Game->getContent()) ?>
+            </p>
+        </div>
+
+
+    </div>
+
+
+    <button type="button" class="bouton">
+        <a href="<?= htmlentities($Game->getLink()) ?>" target="_blank">
+            jouer
+        </a>
+    </button>
+
+
+
+
+
+    <div class="commentContainer">
+        <form class="commentForm" method="post">
+            <label for="comment" aria-placeholder="laisser votre commentaire sur le jeu"> </label>
+            <textarea name="comment" id="" cols="60" rows="4"></textarea>
+            <button type="submit" href="?page=gamePage&id=<?= htmlentities($Game->getId()) ?>">Publier</button>
+        </form>
+
+        <table>
+            <div class="tbl">
+
+                <thead>
+                    <tr>
+                        <th colspan="2">Comentaires des utilisateurs</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <?php
+
+
+                    foreach ($rawData as $data) : ?>
+                        <tr>
+                            <td><?= htmlentities($data['comment']) ?></td>
+                            <td><?= htmlentities($data['lastName']) ?></td>
+
+                        </tr>
+                    <?php endforeach; ?>
+
+
+
+            </div>
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+</div>
